@@ -8,7 +8,7 @@ import Onepage from "./pages/Onepage/Onepage.jsx";
 import Official from "./Signup&Login/official";
 import axios from "axios"
 import Navbar from "./page_comp/navbar";
-
+import './App.css';
 
 
 
@@ -17,7 +17,7 @@ const [idCategorie,setCategorie]=useState(0)
 axios.defaults.withCredentials=true
 
   return (
-    <div className="App">
+    <div >
       <BrowserRouter>
       <Navbar/>
         <Routes>
@@ -26,6 +26,7 @@ axios.defaults.withCredentials=true
           <Route path="/categories" element={<Categories setCategorie={setCategorie} />} ></Route>
           <Route path="/products" element={<Products idCategorie={idCategorie} />}></Route> 
           <Route path="/create" element={<Create />}></Route>
+          
           <Route path="/one" element={<Onepage/>}> </Route>
         </Routes>
       </BrowserRouter>

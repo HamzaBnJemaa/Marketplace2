@@ -5,6 +5,8 @@ import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import Alert from '@mui/material/Alert';
 import axios from "axios"
+import { useNavigate } from "react-router-dom";
+import Cookies from "js-cookie"
 
 function Login() {
   const [email,setEmail]=useState("")
@@ -13,6 +15,9 @@ function Login() {
   const [showpass,setShowpass]=useState(false)
   const [alert,setAlert]=useState(false)
   const [oneuser,setOneuser]=useState([])
+
+const navigate=useNavigate()
+
   axios.defaults.withCredentials=true
   console.log('oneuser getted', oneuser);
   let info={
@@ -26,8 +31,11 @@ const getone = (infoo) => {
   console.log(infoo);
   axios.post("http://localhost:3000/api/market/oneuser", infoo)
     .then((res) => {
+      const token= res.data.token
+      Cookies.set('token',token,{expires:60*60*24})
         setOneuser(res.data);
-        setAlert(false);  
+        setAlert(false);
+        navigate('/home') 
        
       
     })
