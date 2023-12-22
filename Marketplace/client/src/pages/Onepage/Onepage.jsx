@@ -8,7 +8,7 @@ function Onepage() {
     const one = location.state.one
 
 useEffect(()=>{
-    axios.get(`http://localhost:5000/api/product/getOne/${one.id}`).then((res)=>{
+    axios.get(`http://localhost:3000/api/product/getOne/${one.id}`).then((res)=>{
         console.log(res.data)
     }).catch((err)=>{
         console.log(err);

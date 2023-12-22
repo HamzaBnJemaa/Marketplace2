@@ -1,4 +1,6 @@
 import React from 'react'
+import { Link, useLocation } from "react-router-dom";
+
 import TextField from '@mui/material/TextField';
 import Stack from '@mui/material/Stack';
 import Autocomplete from '@mui/material/Autocomplete';
@@ -7,6 +9,7 @@ import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import ShoppingCartCheckoutIcon from '@mui/icons-material/ShoppingCartCheckout';
 import Badge from '@mui/material/Badge';
 function Navbar() {
+  const location = useLocation();
   const top100Films = [
     { title: 'The Shawshank Redemption', year: 1994 },
     { title: 'The Godfather', year: 1972 },
@@ -26,6 +29,16 @@ function Navbar() {
             <li>Contact</li>
             <li>About</li>
             <li>Sign Up</li>
+            <li>
+              <Link
+                className={`link ${
+                  location.pathname === "/Account" ? "active" : ""
+                }`}
+                to="/account"
+              >
+                Account
+              </Link>
+            </li>
           </ul>
         </div>
         <div className='div2_nav'>
