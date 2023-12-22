@@ -6,7 +6,6 @@ import Button from '@mui/material/Button';
 import Alert from '@mui/material/Alert';
 import axios from "axios"
 import { useNavigate } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie"
 
 function Login() {
@@ -34,8 +33,10 @@ const getone = (infoo) => {
     .then((res) => {
       const token= res.data.token
       Cookies.set('token',token,{expires:60*60*24})
-        setOneuser(res.data);
+      console.log(res.data);
+        setOneuser(res.data.rols);
         setAlert(false);  
+        navigate("/home")
        
       
     })

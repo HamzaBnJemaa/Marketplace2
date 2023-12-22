@@ -24,7 +24,6 @@ CREATE TABLE IF NOT EXISTS `marketplace`.`categorys` (
   `idcat` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NOT NULL,
   `image` LONGTEXT NOT NULL,
-  `browses_idb` INT NOT NULL,
   PRIMARY KEY (`idcat`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4

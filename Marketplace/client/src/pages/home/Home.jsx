@@ -1,14 +1,14 @@
 import React from 'react'
-import "./home.css"
 import { Link } from 'react-router-dom'
 import Categories from '../categories/Categories'
+import "./For.css"
 // import NavBar from '../NavBar/NavBar'
 
 
 
 
 
-function Home() {
+function Home({setRefresh,refresh,setCategorie}) {
   return (
     <div>
 
@@ -16,7 +16,8 @@ function Home() {
 
   
     <div className='image-de-couverture'>
-      <img src="https://img.lapresse.ca/924x615/201405/16/854944-installer-haut-parleurs-ne-fait.jpg" />
+
+      <img id='img1' src="https://img.lapresse.ca/924x615/201405/16/854944-installer-haut-parleurs-ne-fait.jpg" />
 
      </div>
      <dir>
@@ -28,7 +29,7 @@ function Home() {
         <div className="item"><Link to="/categories">Sports & Outdoor</Link> </div>
         <div className="item"><Link to="/categories">Baby's & Toys</Link> </div>
         <div className="item"><Link to="/categories">Health & Beauty</Link> </div> */}
-        <Categories />
+        <Categories setRefresh={setRefresh} refresh={refresh} setCategorie={setCategorie} />
     </div>
 
      </dir>

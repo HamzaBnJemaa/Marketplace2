@@ -6,7 +6,11 @@ import { Link, useNavigate } from 'react-router-dom';
 
 function Categories({setRefresh,refresh,setCategorie}) {
  
+  console.log(setCategorie);
+ 
   const [categories, setCategories] = useState([]);
+
+
   const navigate=useNavigate()
 
   
@@ -22,8 +26,9 @@ function Categories({setRefresh,refresh,setCategorie}) {
       });
   }, [!refresh]);
 
-  const handleCategoryClick = (categorys_idcat) => {
-    setCategorie(categorys_idcat);
+  const handleCategoryClick = (categorys_id) => {
+    console.log("here",categorys_id);
+    setCategorie(categorys_id);
     navigate('/products')
     
   };
@@ -32,7 +37,7 @@ function Categories({setRefresh,refresh,setCategorie}) {
     <div className='Category'>
       {categories.map((category, i) => (
         <div  key={i}>
-          <h1 onClick={() => handleCategoryClick(category.id)}>{category.name}</h1>
+          <h1 onClick={() => handleCategoryClick(category.idcat)}>{category.name}</h1>
           <img  src={category.image}/>
         </div>
       ))}

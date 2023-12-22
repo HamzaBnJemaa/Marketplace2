@@ -29,15 +29,15 @@ exports.getAll = function (req, res) {
     });
 };
 
-exports.getOne = function (req, res) {
-  db.Product.findAll({where :{id:req.params.idp}})
-    .then((result) => {
-      res.json(result);
-    })
-    .catch((err) => {
-      res.send(err);
-    });
-};
+// exports.getOne = function (req, res) {
+//   db.Product.findAll({where :{idp:req.params.id}})
+//     .then((result) => {
+//       res.json(result);
+//     })
+//     .catch((err) => {
+//       res.send(err);
+//     });
+// };
 
 exports.remove = function (req, res) {
     console.log(req.params.id);

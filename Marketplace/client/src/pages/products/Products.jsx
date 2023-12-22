@@ -4,6 +4,7 @@ import "./products.css";
 import { Link } from "react-router-dom";
 
 function Products({ idCategorie }) {
+  console.log(idCategorie);
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
@@ -22,7 +23,7 @@ function Products({ idCategorie }) {
     <div className="product-item">
       {products.map((product, i) => (
         <div className="products-container" key={i}>
-          <img className="product-item img" src={product.image} />
+          <img className="product-item img" src={product.image[0]} />
           <div>
             <h1>{product.name}</h1>
             <p>{product.description}</p>
