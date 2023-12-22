@@ -1,5 +1,5 @@
 // require your Model phrase here
-const User = require ('../../database-mysql/index');
+const {User}= require ('../../database-mysql/index');
 const bcrypt= require("bcrypt")
 const jwt =require("jsonwebtoken")
 const cookieparser=require("cookie-parser")
@@ -28,7 +28,7 @@ let getone=async(req,res)=>{
         if(response){
           const name=user.name
           const token=jwt.sign({name},"jwt-secret-key",{expiresIn:"1d"});
-          res.cookie('token',token);
+          user.dataValues.token=token
           return res.json(user)
         }
         else{

@@ -8,12 +8,12 @@ const cookieparser=require("cookie-parser")
 const cors = require("cors")
 const app = express();
 const PORT = 3000;
+app.use(express.json());
 app.use(cors({
   origin: ["http://localhost:3001"],
   methods: ["POST", "GET"],
   credentials: true
 }));
-app.use(express.json());
 app.use(cookieparser())
 // app.use("/api/browse",translateRoute)
 app.use("/api/categories",translateRoute2)
