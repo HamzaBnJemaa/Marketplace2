@@ -4,11 +4,12 @@ import "./products.css";
 import { Link } from "react-router-dom";
 
 function Products({ idCategorie }) {
+  console.log(idCategorie);
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/api/product/get/${idCategorie}`)
+      .get(`http://localhost:3000/api/product/get/${idCategorie}`)
       .then((res) => {
         console.log("products", res.data);
         setProducts(res.data);
@@ -22,7 +23,7 @@ function Products({ idCategorie }) {
     <div className="product-item">
       {products.map((product, i) => (
         <div className="products-container" key={i}>
-          <img className="product-item img" src={product.image} />
+          <img className="product-item img" src={product.image[0]} />
           <div>
             <h1>{product.name}</h1>
             <p>{product.description}</p>
