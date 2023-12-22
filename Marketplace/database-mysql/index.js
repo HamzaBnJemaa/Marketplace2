@@ -11,6 +11,9 @@ const connection = new Sequelize(
   {
     host: "localhost",
     dialect: "mysql",
+    define:{
+      timestamps:false,
+    }
   }
 );
 
@@ -28,7 +31,12 @@ const Category = connection.define('Category', {
 });
 
 // Define the User model
-const User = connection.define('User', {
+const User = connection.define('users', {
+  idu:{
+type:DataTypes.INTEGER,
+primaryKey:true,
+autoIncrement: true,  
+  },
   name: {
     type: DataTypes.STRING,
     allowNull: false,

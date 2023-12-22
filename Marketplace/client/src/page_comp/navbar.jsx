@@ -6,6 +6,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import ShoppingCartCheckoutIcon from '@mui/icons-material/ShoppingCartCheckout';
 import Badge from '@mui/material/Badge';
+import { Link } from 'react-router-dom';
 function Navbar() {
   const top100Films = [
     { title: 'The Shawshank Redemption', year: 1994 },
@@ -22,10 +23,11 @@ function Navbar() {
         <div><h1 className='title_nav'>MarketPlace</h1></div>
         <div className='div1_nav'>
           <ul className='ul_nav'>
-            <li>Home</li>
+            <li><Link to='/home'>Home</Link></li>
             <li>Contact</li>
             <li>About</li>
-            <li>Sign Up</li>
+            <li><Link to='/'>Login</Link></li>
+            <li><Link to='/add'>Add product</Link></li>
           </ul>
         </div>
         <div className='div2_nav'>

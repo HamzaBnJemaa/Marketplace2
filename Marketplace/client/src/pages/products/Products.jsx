@@ -8,7 +8,7 @@ function Products({ idCategorie }) {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/api/product/get/${idCategorie}`)
+      .get(`http://localhost:3000/api/product/get/${idCategorie}`)
       .then((res) => {
         console.log("products", res.data);
         setProducts(res.data);
