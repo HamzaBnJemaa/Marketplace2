@@ -40,6 +40,7 @@ const adduser=(info)=>{
   .then(()=>{
    console.log("user added");
    setAlert(!alert)
+   navigate('/')
   })
   .catch((err)=>{
    console.error("error:",err);
@@ -199,7 +200,7 @@ let showpass=()=>{
         <Button   style={sty2}   startIcon={<GoogleIcon/>}>Sign up with Google</Button>
         </Stack>
         </div>
-        <p className='parag_sign'>Already have account? <a onClick={()=>{change("login")}} className='link_sign' >Log in</a></p>
+        <p className='parag_sign'>Already have account? <a onClick={()=>{change("login")}} className='link_sign' > Log in</a></p>
     </div>
   )
 }

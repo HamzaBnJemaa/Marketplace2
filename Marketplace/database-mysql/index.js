@@ -7,7 +7,7 @@ const { Sequelize, DataTypes } = require("sequelize");
 const connection = new Sequelize(
   "marketplace",
   "root",
-  "root",
+  "407000",
   {
     host: "localhost",
     dialect: "mysql",
@@ -44,14 +44,15 @@ autoIncrement: true,
   email: {
     type: DataTypes.STRING,
     allowNull: false,
+    unique: true,
   },
   password: {
-    type: DataTypes.TEXT,
+    type: DataTypes.STRING,
     allowNull: false,
   },
   rols: {
     type: DataTypes.STRING,
-    allowNull: false,
+    allowNull: true,
   },
 });
 

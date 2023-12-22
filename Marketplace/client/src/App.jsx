@@ -37,6 +37,7 @@ axios.defaults.withCredentials=true
           <Route path="/categories" element={<Categories setRefresh={setRefresh} refresh={refresh} setCategorie={setCategorie} />} ></Route>
           <Route path="/products" element={<Products idCategorie={idCategorie} />}></Route> 
           <Route path="/create" element={<Create />}></Route>
+          
           <Route path="/one" element={<Onepage/>}> </Route>
         </Routes>
       </BrowserRouter>
