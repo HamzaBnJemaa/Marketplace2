@@ -1,5 +1,5 @@
 const Route = require("express").Router();
-const controller = require("../controllers/controller");
+const controller = require("../controllers/athentication");
 
 
 Route.get("/alluser", controller.getAll);
