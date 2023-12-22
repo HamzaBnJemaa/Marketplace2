@@ -3,6 +3,9 @@ const express = require("express");
 
 const Product= require("../database-mysql");
 const authrout=require("./routes/Rauthentication")
+const admin =require("./routes/Radmin")
+const Product= require("../database-mysql");
+// const translateRoute = require("./routes/Rbrowses");
 const translateRoute2 = require("./routes/Rcategories");
 const translateRoute3 =require("./routes/Rproduct")
 const translateRoute4 = require("./routes/Roneproduct");
@@ -30,6 +33,7 @@ app.use("/api/categories",translateRoute2)
 app.use("/api/product",translateRoute3)
 app.use("/api/Oneproduct",translateRoute4)
 app.use("/api/market", authrout);
+app.use("/api/admin",admin)
 
 
 app.get('/get',(req,res)=>{
