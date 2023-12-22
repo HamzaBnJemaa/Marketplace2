@@ -7,7 +7,7 @@ const { Sequelize, DataTypes } = require("sequelize");
 const connection = new Sequelize(
   "marketplace",
   "root",
-  "407000",
+  "eyaattafi2003",
   {
     host: "localhost",
     dialect: "mysql",
