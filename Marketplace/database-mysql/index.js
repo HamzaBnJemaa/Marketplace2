@@ -7,7 +7,7 @@ const { Sequelize, DataTypes } = require("sequelize");
 const connection = new Sequelize(
   "marketplace",
   "root",
-  "eyaattafi2003",
+  "407000",
   {
     host: "localhost",
     dialect: "mysql",
@@ -19,7 +19,8 @@ const connection = new Sequelize(
 
 
 // Define the Category model
-const Category = connection.define('Category', {
+const Category = connection.define('Categorys', {
+  
   name: {
     type: DataTypes.STRING,
     allowNull: false,
@@ -57,7 +58,12 @@ const User = connection.define('users', {
 });
 
 // Define the Product model
-const Product = connection.define('Product', {
+const Product = connection.define('products', {
+  idp:{
+    type: DataTypes.INTEGER,
+    primaryKey: true,
+    autoIncrement: true,
+  },
   name: {
     type: DataTypes.STRING,
     allowNull: false,
@@ -74,7 +80,7 @@ const Product = connection.define('Product', {
     type: DataTypes.INTEGER,
     allowNull: false,
   },
-  description: {
+  discription: {
     type: DataTypes.TEXT,
     allowNull: false,
   },

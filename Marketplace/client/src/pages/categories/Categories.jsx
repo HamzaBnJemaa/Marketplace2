@@ -9,7 +9,7 @@ function Categories({setCategorie}) {
   const navigate=useNavigate()
   useEffect(() => {
     axios
-      .get('http://localhost:5000/api/categories/get')
+      .get('http://localhost:3000/api/categories/get')
       .then((res) => {
         console.log("categories",res.data);
         setCategories(res.data);

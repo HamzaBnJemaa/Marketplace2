@@ -9,7 +9,7 @@ import Checkbox from '@mui/material/Checkbox';
 import FavoriteBorder from '@mui/icons-material/FavoriteBorder';
 import Favorite from '@mui/icons-material/Favorite';
 import ButtonGroup from '@mui/material/ButtonGroup';
-
+import "./oneprod.css"
 function Product() {
   const[data,setData]=useState([])
   const [selectedValue, setSelectedValue] =useState('a');
