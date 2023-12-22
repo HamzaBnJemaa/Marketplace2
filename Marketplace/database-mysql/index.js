@@ -96,6 +96,35 @@ const Product = connection.define('Product', {
   },
 });
 
+
+const Client = connection.define('Client', {
+  // Your model definition here
+  idu: {
+    type: DataTypes.INTEGER, 
+            autoIncrement: true,
+            primaryKey: true
+  },
+  name: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  email: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  password: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  rols: {
+    type: DataTypes.BOOLEAN, 
+     allowNull: false,
+     defaultValue: true
+  }
+});
+
+
+
 // Define the Save model
 const Save = connection.define('Save', {});
 
@@ -134,4 +163,4 @@ connection.authenticate()
 
 
 
-module.exports = {User,Save,Product,Category}
+module.exports = {User,Save,Product,Category,Client}

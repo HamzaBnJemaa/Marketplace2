@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { BrowserRouter, Routes, Route  } from "react-router-dom";
+import { BrowserRouter , Routes, Route, Outlet  } from "react-router-dom";
 import Home from "./pages/home/Home.jsx"
 import Categories from "./pages/categories/Categories.jsx";
 import Products from "./pages/products/Products.jsx";
@@ -11,6 +11,8 @@ import Navbar from "./page_comp/navbar";
 import Account from "./Account/Account.jsx";
 import Footer from "./Footer/Footer.jsx";
 import SideBar from "./Account/SideBar.jsx";
+import Error from "./error/Error.jsx"
+import WishList from "./wishList/WishList.jsx"
 import './App.css';
 
 
@@ -23,6 +25,9 @@ axios.defaults.withCredentials=true
     <div >
       <BrowserRouter>
       <Navbar/>
+      
+      <Outlet/>
+      <SideBar/>
         <Routes>
           <Route path="/" element={<Official/>}></Route>
           <Route path="/home" element={<Home/>}></Route>
@@ -32,6 +37,10 @@ axios.defaults.withCredentials=true
           <Route path="/one" element={<Onepage/>}> </Route>
           <Route path ="/sideBar" element={<SideBar/>} />
          <Route path="/account" element={<Account/>} /> 
+         <Route path="*" element={<Error />} />
+         <Route path="/wishlist" element={<WishList />} />
+
+          
          
         </Routes>
         <Footer/>

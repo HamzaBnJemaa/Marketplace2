@@ -1,5 +1,5 @@
 const Route = require("express").Router();
-const controller = require("../controllers/controller");
+const controller = require("../controllers/Coneproduct.js");
 
 
 Route.get("/getAll", controller.getAllProduct);
