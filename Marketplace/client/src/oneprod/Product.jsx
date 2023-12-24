@@ -10,6 +10,8 @@ import FavoriteBorder from '@mui/icons-material/FavoriteBorder';
 import Favorite from '@mui/icons-material/Favorite';
 import ButtonGroup from '@mui/material/ButtonGroup';
 import { useLocation } from 'react-router-dom';
+import { Link } from "react-router-dom";
+import Cookies from "js-cookie"
 import "./Pro.css"
 
 
@@ -21,12 +23,12 @@ function Product() {
   const [mainImage, setMainImage] = useState("")
   const [selectedButton, setSelectedButton] = useState(null);
   const [size,setSize]=useState("")
+const id = Cookies.get("id")
   
   const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
   
   const location = useLocation();
   const one = location.state.one
-  console.log(one);
   
   useEffect(() => {
     axios
@@ -39,6 +41,18 @@ function Product() {
         console.log(err);
       });
   }, []);
+
+const HandleFav =(obj) =>{
+  axios.post(`http://localhost:3000/api/product/addFav`,obj).then((resss)=>{
+    console.log("added");
+ 
+  }).catch((err)=>{
+    console.log(err);
+  })
+}
+
+
+
   const handleChange = (event) => {
     setSelectedValue(event.target.value);
   };
@@ -66,7 +80,7 @@ function Product() {
   const handleSize=(newSize)=>{
     setSize(newSize)
   }
-
+console.log("ge",id);
 
   return (
     <div>
@@ -228,11 +242,13 @@ function Product() {
               />
               </div >
             <div className='q'>
-            <Button variant="contained" color="error">BUY</Button> 
+            <Button variant="contained" color="error" >
+            <Link to="/card" state={{one:one}}>BUY</Link>
+            </Button> 
             </div>
 
             <div className='q'>
-            <Checkbox {...label} icon={<FavoriteBorder color="error"/>} checkedIcon={<Favorite color="error"/>} />
+            <Checkbox {...label} icon={<FavoriteBorder color="error"/>} onClick={()=>{HandleFav({product_idp:one.idp,users_idu:id})}} checkedIcon={<Favorite color="error"/>  } />
             </div>    
             </div>
             </div>

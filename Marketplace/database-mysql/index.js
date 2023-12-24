@@ -156,18 +156,7 @@ const Save = connection.define('save', {
 Save.belongsTo(User, { foreignKey: 'users_idu', as: 'user' });
 Save.belongsTo(Product, { foreignKey: 'product_idp', as: 'product' });
 
-// // Set up associations
-// Category.hasMany(Product, { foreignKey: 'categorys_idcat' });
-// Product.belongsTo(Category, { foreignKey: 'categorys_idcat' });
 
-// User.hasMany(Product, { foreignKey: 'users_idu' });
-// Product.belongsTo(User, { foreignKey: 'users_idu' });
-
-// User.hasMany(Save, { foreignKey: 'users_idu' });
-// Save.belongsTo(User, { foreignKey: 'users_idu' });
-
-// Product.hasMany(Save, { foreignKey: 'product_idp' });
-// Save.belongsTo(Product, { foreignKey: 'product_idp' });
 
 
 connection.authenticate()

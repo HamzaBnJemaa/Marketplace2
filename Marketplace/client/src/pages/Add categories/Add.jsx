@@ -6,6 +6,7 @@ import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 
+
 function Add() {
   const [name, setName] = useState("");
   const [ima, setImage] = useState("");

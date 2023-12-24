@@ -4,7 +4,7 @@ const express = require("express");
 const Product= require("../database-mysql");
 const authrout=require("./routes/Rauthentication")
 const admin =require("./routes/Radmin")
-const Product= require("../database-mysql");
+
 // const translateRoute = require("./routes/Rbrowses");
 const translateRoute2 = require("./routes/Rcategories");
 const translateRoute3 =require("./routes/Rproduct")
