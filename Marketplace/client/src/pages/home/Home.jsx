@@ -1,36 +1,67 @@
-import React from 'react'
-import "./home.css"
-import { Link } from 'react-router-dom'
-import Categories from '../categories/Categories'
-import NavBar from '../NavBar/NavBar'
+import React, { useEffect, useState } from 'react';
+import Categories from '../categories/Categories';
+import Box from '@mui/material/Box';
+import Paper from '@mui/material/Paper';
+import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
+import axios from 'axios';
+import './For.css';
+import Nouv from '../Nouveau/Nouv';
 
+function Home({ setRefresh, refresh, setCategorie }) {
+  const [allProducts, setAllProducts] = useState([]);
+  const [showAllProducts, setShowAllProducts] = useState(false);
 
+  useEffect(() => {
+    axios.get('http://localhost:3000/api/product/get')
+      .then((res) => {
+        setAllProducts(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
 
+  const handleShowAllProducts = () => {
+    setShowAllProducts(true);
+  };
 
+  let displayedProducts;
 
-function Home() {
+  if (showAllProducts) {
+    displayedProducts = allProducts;
+  } else {
+    displayedProducts = allProducts.slice(0, 5);
+  }
+
   return (
-    <div>
-
-    <NavBar />
-
-    <div className="container">
-        <div className="item">< Link to="/categories" >Exclusive Woman's Fashion</Link></div>
-        <div className="item"><Link to="/categories">Men's Fashion</Link></div>
-        <div className="item"><Link to="/categories">Electronic</Link></div>
-        <div className="item"> <Link to="/categories">Home & Lifestyle</Link></div>
-        <div className="item"><Link to="/categories">Sports & Outdoor</Link> </div>
-        <div className="item"><Link to="/categories">Baby's & Toys</Link> </div>
-        <div className="item"><Link to="/categories">Health & Beauty</Link> </div>
+    <div className="home-container">
+      <h1 id="title" className="titles">Bienvenue sur notre site de vente en ligne !</h1>
+      <div className='slide-container'>
+  <Nouv />
+</div>
+      <div className="container">
+        <h2 className='cont-h2'>Browse By Category</h2>
+        <Box sx={{ width: '80%', flexBasis: '70%' }}>
+          <Categories setRefresh={setRefresh} refresh={refresh} setCategorie={setCategorie} />
+        </Box>
+      </div>
+      <div>
+        <h1 className='Cont-h1'>Explore Our Products</h1>
+        <div className='button-1'></div>
+        <Box className="image-box-container">
+          {displayedProducts.map((el, i) => (
+            <div key={i} className="image-box">
+              <img className="product-image" src={el.image[0]} alt={`Product ${i + 1}`} />
+              <Paper elevation={3} className="image-paper" />
+            </div>
+          ))}
+        </Box>
+        <div className='button-2'>
+          <RemoveRedEyeIcon onClick={handleShowAllProducts} />
+        </div>
+      </div>
     </div>
-
-    <div className='image-de-couverture'>
-      <img src="https://img.lapresse.ca/924x615/201405/16/854944-installer-haut-parleurs-ne-fait.jpg" />
-
-     </div>
-     {/* <button><Link to="/Create">Add product</Link></button> */}
-    </div>
-  )
+  );
 }
 
-export default Home
+export default Home;
