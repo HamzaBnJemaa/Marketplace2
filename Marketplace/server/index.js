@@ -1,7 +1,10 @@
 const express = require("express");
+
+
+const Product= require("../database-mysql");
 const authrout=require("./routes/Rauthentication")
 const admin =require("./routes/Radmin")
-const Product= require("../database-mysql");
+
 // const translateRoute = require("./routes/Rbrowses");
 const translateRoute2 = require("./routes/Rcategories");
 const translateRoute3 =require("./routes/Rproduct")
@@ -9,8 +12,14 @@ const translateRoute4 = require("./routes/Roneproduct");
 const cookieparser=require("cookie-parser")
 const cors = require("cors")
 const app = express();
+
+
 const PORT = 3000;
+
 app.use(express.json());
+
+
+
 app.use(cors({
   origin: ["http://localhost:3001"],
   methods: ["POST","GET","PUT","DELETE"],
@@ -22,6 +31,7 @@ app.use((req, res, next) => {
   next();
 });
 app.use(cookieparser())
+
 // app.use("/api/browse",translateRoute)
 app.use("/api/categories",translateRoute2)
 app.use("/api/product",translateRoute3)
@@ -35,14 +45,14 @@ app.get('/get',(req,res)=>{
 })
 
 
-app.post("/login",(req,res)=>{
-  Product.User.create(req.body)
-  .then((result)=>{
-    res.send(result)
-  }).catch((err)=>{
-    console.log(err);
-  })
-})
+// app.post("/login",(req,res)=>{
+//   Product.User.create(req.body)
+//   .then((result)=>{
+//     res.send(result)
+//   }).catch((err)=>{
+//     console.log(err);
+//   })
+// })
 
 
 app.listen(3000, () => {
