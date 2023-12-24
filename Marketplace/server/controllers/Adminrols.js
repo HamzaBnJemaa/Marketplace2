@@ -18,6 +18,15 @@ let getsellers=async(req,res)=>{
         console.log(err);
     }
 }
+let getadmin=async(req,res)=>{
+  try{
+    const admin=await User.findAll({where:{rols:"Admin"}})
+    res.json(admin)
+  }
+  catch(err){
+    console.error(err);
+  }
+}
 ////////// CATEGORYS ////////////////
 let getAllCateg = function (req, res) {
     Category.findAll()
@@ -30,7 +39,7 @@ let getAllCateg = function (req, res) {
 }
 
 let createcat = function (req, res) {
-    db.Category.create(req.body)
+      Category.create(req.body)
       .then(() => {
         res.json("added");
       })
@@ -41,7 +50,7 @@ let createcat = function (req, res) {
 
 let removegcateg = function (req, res) {
     console.log(req.params.idcat);
-  db.Category.destroy({where:{ idcat: req.params.idcat }})
+    Category.destroy({where:{ idcat: req.params.idcat }})
     .then((result) => {
       res.send("deleted");
     })
@@ -53,7 +62,7 @@ let removegcateg = function (req, res) {
 let updatecateg = function (req, res) {
     console.log(req.body);
     console.log(req.params.idcat);
-  db.Category.update(req.body,{where:{idcat:req.params.id}})
+    Category.update(req.body,{where:{idcat:req.params.id}})
     .then((result) => {
       res.json(result);
     })
@@ -62,13 +71,14 @@ let updatecateg = function (req, res) {
     });
 };
 
+
 /////////////// PRODUCT /////////////////
 let getAllProduct =(req, res) => {
     Product.findAll().then((result)=>{res.json(result)}).catch((err)=>{console.log(err)})
    }
 
 let deleteProduct = (req, res) => {
-    db.Product.destroy({where:{id:req.params.id}}).then((result)=>{res.json(result)}).catch((err)=>{console.log(err)})
+    Product.destroy({where:{idp:req.params.idp}}).then((result)=>{res.json(result)}).catch((err)=>{console.log(err)})
   }; 
 
-module.exports={getAllCateg,getAllProduct,getclients,getsellers,deleteProduct,removegcateg,updatecateg,createcat}
+module.exports={getAllCateg,getadmin,getAllProduct,getclients,getsellers,deleteProduct,removegcateg,updatecateg,createcat}
