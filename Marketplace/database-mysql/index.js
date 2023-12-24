@@ -20,7 +20,11 @@ const connection = new Sequelize(
 
 // Define the Category model
 const Category = connection.define('Categorys', {
-  
+  idcat: {
+    type: DataTypes.INTEGER,
+    primaryKey: true,
+    autoIncrement: true,
+  },
   name: {
     type: DataTypes.STRING,
     allowNull: false,

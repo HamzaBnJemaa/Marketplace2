@@ -13,9 +13,14 @@ const PORT = 3000;
 app.use(express.json());
 app.use(cors({
   origin: ["http://localhost:3001"],
-  methods: ["POST", "GET"],
-  credentials: true
+  methods: ["POST","GET","PUT","DELETE"],
+  credentials: true,
+  
 }));
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Credentials', 'true');
+  next();
+});
 app.use(cookieparser())
 // app.use("/api/browse",translateRoute)
 app.use("/api/categories",translateRoute2)
