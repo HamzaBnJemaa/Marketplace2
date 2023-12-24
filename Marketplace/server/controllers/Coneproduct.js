@@ -12,7 +12,10 @@ module.exports.getOneProduct =(req, res) => {
 
 
 module.exports.createProduct = (req, res) => {
-    db.Product.create(req.body).then((result)=>{res.json(result)}).catch((err)=>{console.log(err)})
+    db.Product.create(req.body)
+    .then((result)=>
+    {res.json(result)})
+    .catch((err)=>{console.log(err)})
 };
 
 module.exports.deleteProduct = (req, res) => {

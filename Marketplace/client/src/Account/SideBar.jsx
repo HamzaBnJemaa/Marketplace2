@@ -9,14 +9,20 @@ export default function SideBar() {
     <div className="side"> 
     <div className="manage-my-account">Manage My Account</div>
       <div className="my-orders">My Orders</div>
-      <div className="my-wishlist">My WishList</div>
+      <div className="my-wishlist"><Link
+                className={`link ${
+                  location.pathname === "/wishList" ? "active" : ""
+                }`}
+                to="/wishList"
+              >
+                My WishList
+              </Link></div>
       <div className="my-profile-parent">
         <div className="my-profile"><Link
                 className={`link ${
                   location.pathname === "/account" ? "active" : ""
                 }`}
-                to="/account"
-              >
+                to="/account">
                 My Profile
               </Link></div>
         <div className="address-book">Address Book</div>

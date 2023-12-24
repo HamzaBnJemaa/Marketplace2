@@ -4,6 +4,7 @@ import "./create.css";
 import Box from "@mui/material/Box";
 import Input from "@mui/material/Input";
 import { Link } from "react-router-dom";
+import SideBar from "../../Account/SideBar";
 function Create() {
   const ariaLabel = { "aria-label": "description" };
 
@@ -102,6 +103,7 @@ function Create() {
           <Link to="/categories">Add</Link> 
         </button>
       </div>
+      <SideBar/>
     </div>
   );
 }

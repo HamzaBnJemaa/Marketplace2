@@ -14,8 +14,8 @@ import SideBar from "./Account/SideBar.jsx";
 import Error from "./error/Error.jsx"
 import WishList from "./wishList/WishList.jsx"
 import './App.css';
-
-
+import Admin from "./admin/Admin.jsx";
+import Dashboard from "./admin/Dashboard.jsx";
 
 function App() {
 const [idCategorie,setCategorie]=useState(0)
@@ -25,11 +25,10 @@ axios.defaults.withCredentials=true
     <div >
       <BrowserRouter>
       <Navbar/>
-      
       <Outlet/>
-      <SideBar/>
+      
         <Routes>
-          <Route path="/" element={<Official/>}></Route>
+           <Route path="/" element={<Official/>}></Route>
           <Route path="/home" element={<Home/>}></Route>
           <Route path="/categories" element={<Categories setCategorie={setCategorie} />} ></Route>
           <Route path="/products" element={<Products idCategorie={idCategorie} />}></Route> 
@@ -42,6 +41,9 @@ axios.defaults.withCredentials=true
 
           
          
+          <Route path="/one" element={<Products/>}> </Route> 
+          <Route path="/admin" element={<Admin/>} ></Route>
+          <Route path="/admin/dashboard" element={<Dashboard/>}></Route>
         </Routes>
         <Footer/>
       </BrowserRouter>
