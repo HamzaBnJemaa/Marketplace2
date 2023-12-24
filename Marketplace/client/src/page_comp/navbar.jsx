@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link, useLocation } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 
 import TextField from '@mui/material/TextField';
 import Stack from '@mui/material/Stack';
@@ -8,6 +8,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import ShoppingCartCheckoutIcon from '@mui/icons-material/ShoppingCartCheckout';
 import Badge from '@mui/material/Badge';
+
 function Navbar() {
   const location = useLocation();
   const top100Films = [
@@ -25,11 +26,12 @@ function Navbar() {
         <div><h1 className='title_nav'>MarketPlace</h1></div>
         <div className='div1_nav'>
           <ul className='ul_nav'>
-            <li>Home</li>
+            <li><Link to='/home'>Home</Link></li>
             <li>Contact</li>
-            <li>About</li>
+            <li><Link to="/create">Create</Link></li>
+            <li> <Link to="/About">About Us</Link></li>
             <li>Sign Up</li>
-            <li>
+            <li> 
               <Link
                 className={`link ${
                   location.pathname === "/Account" ? "active" : ""
@@ -38,6 +40,7 @@ function Navbar() {
               >
                 Account
               </Link>
+              <li><Link to="/add">Add</Link></li>
             </li>
           </ul>
         </div>
@@ -55,12 +58,12 @@ function Navbar() {
       <div className='icons_nav'>
       <button className='nav_icons'>
     <Badge badgeContent={8} color="error">
-    <FavoriteBorderIcon />
+    <Link to="/wish"><FavoriteBorderIcon /></Link>
     </Badge>
     </button>
     <button className='nav_icons'>
     <Badge color="error" variant="dot">
-    <ShoppingCartCheckoutIcon/>
+   <ShoppingCartCheckoutIcon/>
     </Badge>
     </button >
     </div>

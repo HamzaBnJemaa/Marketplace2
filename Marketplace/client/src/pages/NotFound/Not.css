@@ -1,0 +1,36 @@
+.Not-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    text-align: center;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  .Not-h1 {
+    font-size: 6rem;
+    color: #333;
+    margin-bottom: 16px;
+  }
+  
+  .Not-p1 {
+    font-size: 1.5rem;
+    color: #555;
+    margin-bottom: 24px;
+  }
+  
+  .Not-sec {
+    text-decoration: none;
+    color: #fff;
+    background-color: #007bff;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+  }
+  
+  .Not-sec:hover {
+    background-color: #0056b3;
+  }
+  

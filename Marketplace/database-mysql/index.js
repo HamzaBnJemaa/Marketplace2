@@ -7,12 +7,12 @@ const { Sequelize, DataTypes } = require("sequelize");
 const connection = new Sequelize(
   "marketplace",
   "root",
-  "407000",
+  "root",
   {
     host: "localhost",
     dialect: "mysql",
-    define: {
-      timestamps: false,
+    define:{
+      timestamps:false,
     }
   }
 );
@@ -20,52 +20,57 @@ const connection = new Sequelize(
 
 // Define the Category model
 const Category = connection.define('Categorys', {
-  
+  idcat: {
+    type: DataTypes.INTEGER,
+    primaryKey: true,
+    autoIncrement: true,
+  },
   name: {
-    type: DataTypes.STRING,
+    type: DataTypes.STRING(45),
     allowNull: false,
   },
   image: {
-    type: DataTypes.TEXT,
+    type: DataTypes.TEXT('long'),
     allowNull: false,
   },
 });
-
 // Define the User model
 const User = connection.define('users', {
   idu: {
     type: DataTypes.INTEGER,
-    primaryKey: true,
+    allowNull: false,
     autoIncrement: true,
+    primaryKey: true,
   },
   name: {
-    type: DataTypes.STRING,
+    type: DataTypes.STRING(45),
     allowNull: false,
   },
   email: {
-    type: DataTypes.STRING,
+    type: DataTypes.STRING(45),
     allowNull: false,
-    unique: true,
   },
   password: {
-    type: DataTypes.STRING,
+    type: DataTypes.TEXT('long'),
     allowNull: false,
   },
   rols: {
-    type: DataTypes.STRING,
-    allowNull: true,
+    type: DataTypes.STRING(45),
+    allowNull: false,
   },
 });
 
+
 // Define the Product model
-const Product = connection.define('products', {
-  idp:{
+const Product = connection.define('product', {
+  idp: {
     type: DataTypes.INTEGER,
-    primaryKey: true,
+    allowNull: false,
     autoIncrement: true,
+    primaryKey: true,
   },
   name: {
-    type: DataTypes.STRING,
+    type: DataTypes.STRING(45),
     allowNull: false,
   },
   image: {
@@ -80,43 +85,77 @@ const Product = connection.define('products', {
     type: DataTypes.INTEGER,
     allowNull: false,
   },
-  discription: {
-    type: DataTypes.TEXT,
+  categorys_idcat: {
+    type: DataTypes.INTEGER,
     allowNull: false,
+    references: {
+      model: Category,
+      key: 'idcat',
+    },
   },
-  color: {
-    type: DataTypes.STRING,
+  users_idu: {
+    type: DataTypes.INTEGER,
     allowNull: false,
-  },
-  size: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
-  sellername: {
-    type: DataTypes.STRING,
-    allowNull: false,
+    references: {
+      model: User,
+      key: 'idu',
+    },
   },
   rate: {
     type: DataTypes.INTEGER,
     allowNull: false,
   },
+  discription: {
+    type: DataTypes.TEXT('long'),
+    allowNull: false,
+  },
+  color: {
+    type: DataTypes.STRING(45),
+    allowNull: false,
+  },
+  size: {
+    type: DataTypes.ENUM('xs', 'S', 'M', 'L', 'XL'),
+    allowNull: false,
+  },
+  sellername: {
+    type: DataTypes.STRING(45),
+    allowNull: false,
+  },
 });
 
+Product.belongsTo(Category, { foreignKey: 'categorys_idcat', as: 'category' });
+Product.belongsTo(User, { foreignKey: 'users_idu', as: 'user' });
+
 // Define the Save model
-const Save = connection.define('Save', {});
+const Save = connection.define('save', {
+  idsave: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+    autoIncrement: true,
+    primaryKey: true,
+  },
+  users_idu: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+    references: {
+      model: User,
+      key: 'idu',
+    },
+  },
+  product_idp: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+    references: {
+      model: Product,
+      key: 'idp',
+    },
+  },
+});
 
-// Set up associations
-Category.hasMany(Product, { foreignKey: 'categorys_idcat' });
-Product.belongsTo(Category, { foreignKey: 'categorys_idcat' });
+Save.belongsTo(User, { foreignKey: 'users_idu', as: 'user' });
+Save.belongsTo(Product, { foreignKey: 'product_idp', as: 'product' });
 
-User.hasMany(Product, { foreignKey: 'users_idu' });
-Product.belongsTo(User, { foreignKey: 'users_idu' });
 
-User.hasMany(Save, { foreignKey: 'users_idu' });
-Save.belongsTo(User, { foreignKey: 'users_idu' });
-
-Product.hasMany(Save, { foreignKey: 'product_idp' });
-Save.belongsTo(Product, { foreignKey: 'product_idp' });
 
 
 connection.authenticate()

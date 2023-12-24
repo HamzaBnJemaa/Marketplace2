@@ -15,8 +15,8 @@ function Login() {
   const [showpass,setShowpass]=useState(false)
   const [alert,setAlert]=useState(false)
   const [oneuser,setOneuser]=useState([])
+  const navigate=useNavigate()
 
-const navigate=useNavigate()
 
   axios.defaults.withCredentials=true
   console.log('oneuser getted', oneuser);
@@ -31,11 +31,15 @@ const getone = (infoo) => {
   console.log(infoo);
   axios.post("http://localhost:3000/api/market/oneuser", infoo)
     .then((res) => {
-      const token= res.data.token
+      const token= res.data.token 
+      
+      setOneuser(res.data.user)
       Cookies.set('token',token,{expires:60*60*24})
-        setOneuser(res.data);
-        setAlert(false);
-        navigate('/home') 
+      Cookies.set('id',res.data.idu)
+
+      console.log(res.data);
+        setAlert(false);  
+        navigate("/home")
        
       
     })

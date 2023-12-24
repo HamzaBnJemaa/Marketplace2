@@ -123,3 +123,47 @@ border: 1px solid;
   margin-bottom: 2em;
   margin-left: 10px;
 }
+.footer-div{
+  padding: 6cm;
+}
+/*/////////////ADMIN////////////////*/
+
+.list-container{
+  margin-left: 20%;
+  margin-right: 5%;
+  background-color: rgba(217, 217, 217, 0.442);
+  padding:3em;
+  border: 5px solid whitesmoke ;
+  border-radius: 10px;
+}
+.list_client{
+  padding: 2em;
+}
+.stack_admin{
+  display: flex;
+  align-items: center;
+}
+.h4_admin{
+  font-size: 28px;
+  font-weight: 500;
+  font-family:Hoefler Text;
+  letter-spacing: 2px;
+}
+.h5_admin{
+  font-size: 22px;
+  font-weight: 400;
+  font-family:New Century Schoolbook;
+  text-transform: capitalize;
+  padding-top: 0.5px;
+  letter-spacing: 1px;
+  padding-left: 3px;
+
+}
+.img_catadmin{
+  width: 68px;
+  border-radius: 50px;
+}
+
+.updateimg_admin{
+padding-left:50px ;
+}
