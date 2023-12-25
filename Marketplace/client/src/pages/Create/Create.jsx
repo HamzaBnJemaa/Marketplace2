@@ -26,6 +26,8 @@ function Create() {
   const [category, setCategory] = useState("");
   const [user, setUser] = useState({});
   const [idu, setIdu] = useState("");
+const[refresh,setRefresh]=useState(false)
+
 
   useEffect(() => {
     axios
@@ -33,6 +35,7 @@ function Create() {
       .then((res) => {
         const idd = Cookies.get("id");
         setCate(res.data);
+        setRefresh(refresh)
         setIdu(idd);
         console.log("categories", res.data);
         if (idu)
@@ -48,7 +51,7 @@ function Create() {
       .catch((err) => {
         console.log(err);
       });
-  }, [idu]);
+  }, [idu,!refresh]);
 
   const add = () => {
     const obj = {

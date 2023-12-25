@@ -2,12 +2,14 @@
 .Category {
   display: flex;
   justify-content: space-around;
-  gap: 10px;
+  gap: 2.1cm;
+ background-color: rgb(255, 255, 255);
   text-align: center;
   margin-left: 150px;
   margin-bottom: 20px;
   width: 100%; 
 }
+
 
 .Category h1 {
   margin: 0;
@@ -15,15 +17,28 @@
   font-size: 15px;
 }
 
-.Category img {
-  max-width: 80%;
-  height: 70%;
+
+  .cat-im{
+  width: 2.5cm;
+  height: 2.5cm;
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+ padding-top: 1cm;
+ padding-left: 1cm;
+ padding-bottom: 1cm;
+ padding-right: 1cm;
+}
+.cat-m{
+  border: 3px solid rgb(113, 113, 113);
+  border-radius: 10px;
+  
 }
 
-
- 
+.cat-m:hover{
+  background-color: #a90000;
+  .cat-h1{
+    color: #ffffff;
+  }
+}
 .Categorys {
   position: relative;
   width: 29%;
@@ -52,7 +67,6 @@
 
 li {
   text-align: center;
-  /* Title/16PX Regular */
   font-size: 18px;
   font-style: normal;
   font-weight: 600;

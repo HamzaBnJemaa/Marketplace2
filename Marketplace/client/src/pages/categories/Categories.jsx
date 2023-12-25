@@ -36,9 +36,9 @@ function Categories({setRefresh,refresh,setCategorie}) {
   return (
     <div className='Category'>
       {categories.map((category, i) => (
-        <div  key={i}>
-          <h1 onClick={() => handleCategoryClick(category.idcat)}>{category.name}</h1>
-          <img  src={category.image}/>
+        <div className='cat-m' key={i} onClick={() => handleCategoryClick(category.idcat)}>
+          <img className='cat-im' src={category.image}/>
+          <h1 className="cat-h1" >{category.name}</h1>
         </div>
       ))}
     </div>

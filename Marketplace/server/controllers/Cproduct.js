@@ -111,3 +111,14 @@ exports.findFav= (req,res) =>{
     res.send(err);
   })
 }
+
+exports.delFav = function (req, res) {
+  console.log(req.params.id)
+  db.Save.destroy({where:{idsave:req.params.id}})
+    .then(() => {
+      res.json("deleted");
+    })
+    .catch((err) => {
+      res.send(err);
+    });
+};

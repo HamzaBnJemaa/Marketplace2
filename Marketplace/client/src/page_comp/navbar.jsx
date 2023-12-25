@@ -1,5 +1,6 @@
-import React from 'react'
-import { Link, NavLink, useLocation } from "react-router-dom";
+
+import React, { useState} from 'react';
+import { Link, useLocation } from 'react-router-dom';
 
 import TextField from '@mui/material/TextField';
 import Stack from '@mui/material/Stack';
@@ -34,8 +35,9 @@ function Navbar() {
             <li>Contact</li>
             <li><Link to="/create">Create</Link></li>
             <li> <Link to="/About">About Us</Link></li>
-            <li>Sign Up</li>
+
             <li> 
+
               <Link
                 className={`link ${
                   location.pathname === "/Account" ? "active" : ""
@@ -69,6 +71,37 @@ function Navbar() {
           </ul>
         </div>
         <div className='div2_nav'>
+
+          <Stack spacing={2} sx={{ width: 300 }} className='stack_nav'>
+            <Autocomplete
+              className='search_nav'
+              id="free-solo-demo"
+              freeSolo
+              options={top100Films.map((option) => option.title)}
+              renderInput={(params) => (
+                <TextField
+                  {...params}
+                  label='What are you looking for?'
+                />
+              )}
+            />
+            <button className='search_icon'><SearchIcon /></button>
+          </Stack>
+          <div className='icons_nav'>
+            <button className='nav_icons'>
+              <Badge badgeContent={top100Films.length} color='error'>
+                <Link to='/wish'>
+                  <FavoriteBorderIcon />
+                </Link>
+              </Badge>
+            </button>
+            <button className='nav_icons'>
+              <Badge color='error' variant='dot'>
+                <ShoppingCartCheckoutIcon />
+              </Badge>
+            </button>
+          </div>
+
         <Stack spacing={2} sx={{ width: 300}} className='stack_nav' >
       <Autocomplete
       className='search_nav'
@@ -91,6 +124,7 @@ function Navbar() {
     </Badge>
     </button >
     </div>
+
         </div>
       </header>
       <hr />
