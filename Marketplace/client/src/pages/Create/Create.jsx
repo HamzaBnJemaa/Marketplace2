@@ -4,6 +4,7 @@ import "./create.css";
 import Box from "@mui/material/Box";
 import Input from "@mui/material/Input";
 import { Link } from "react-router-dom";
+import SideBar from "../../Account/SideBar";
 import Select from "@mui/material/Select";
 import FormControl from "@mui/material/FormControl";
 import InputLabel from "@mui/material/InputLabel";
@@ -25,6 +26,8 @@ function Create() {
   const [category, setCategory] = useState("");
   const [user, setUser] = useState({});
   const [idu, setIdu] = useState("");
+const[refresh,setRefresh]=useState(false)
+
 
   useEffect(() => {
     axios
@@ -32,6 +35,7 @@ function Create() {
       .then((res) => {
         const idd = Cookies.get("id");
         setCate(res.data);
+        setRefresh(refresh)
         setIdu(idd);
         console.log("categories", res.data);
         if (idu)
@@ -47,7 +51,7 @@ function Create() {
       .catch((err) => {
         console.log(err);
       });
-  }, [idu]);
+  }, [idu,!refresh]);
 
   const add = () => {
     const obj = {
@@ -160,6 +164,7 @@ function Create() {
           <Link to="/products">Add</Link>
         </button>
       </div>
+      <SideBar/>
     </div>
   );
 }

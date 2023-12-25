@@ -16,7 +16,7 @@ Route.get('/jib/:id',controller3.jib)
 Route.get('/fav',controller3.fav)
 Route.post("/addFav", controller3.createFav);
 Route.get("/getAll/:id",controller3.findFav)
-
+Route.delete("/delFav/:id",controller3.delFav)
 module.exports = Route;
 
 

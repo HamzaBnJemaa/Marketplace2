@@ -21,8 +21,8 @@ exports.getAll = function (req, res) {
 };
 
 exports.remove = function (req, res) {
-    console.log(req.params.id);
-  db.Category.destroy({where:{ id: req.params.id }})
+    console.log(req.params.idcat);
+  db.Category.destroy({where:{ idcat: req.params.id }})
     .then((result) => {
       res.send("deleted");
     })
@@ -34,7 +34,7 @@ exports.remove = function (req, res) {
 exports.renew = function (req, res) {
     console.log(req.body);
     console.log(req.params.id);
-  db.Category.update(req.body,{where:{id:req.params.id}})
+  db.Category.update(req.body,{where:{idcat:req.params.id}})
     .then((result) => {
       res.json(result);
     })

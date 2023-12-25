@@ -26,6 +26,7 @@
 .my-profile {
   color:brown;
 }
+
 .address-book {
   opacity: 0.5;
 }
@@ -45,7 +46,7 @@
   top: 25rem;
 }
 
-.side{
+/* .side{
   font-family: Poppins;
   font-size: 16px;
   font-weight: 500;
@@ -56,5 +57,5 @@
   margin-top: 500px;
  
   
-}
+} */
 

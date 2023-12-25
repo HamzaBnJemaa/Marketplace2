@@ -1,14 +1,18 @@
 const express = require("express");
 
 
-const Product= require("../database-mysql");
+// const Product= require("../database-mysql");
 const authrout=require("./routes/Rauthentication")
 const admin =require("./routes/Radmin")
-
+const Product= require("../database-mysql");
+// const User =require("../database-mysql/index.js")
 // const translateRoute = require("./routes/Rbrowses");
+
 const translateRoute2 = require("./routes/Rcategories");
 const translateRoute3 =require("./routes/Rproduct")
 const translateRoute4 = require("./routes/Roneproduct");
+// const translateRoute5= require("./routes/clientRouter")
+
 const cookieparser=require("cookie-parser")
 const cors = require("cors")
 const app = express();
@@ -22,10 +26,14 @@ app.use(express.json());
 
 app.use(cors({
   origin: ["http://localhost:3001"],
-  methods: ["POST", "GET"],
-  credentials: true
-}));
 
+  methods: ["POST","GET","PUT","DELETE"],
+  credentials: true,
+}));
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Credentials', 'true');
+  next();
+});
 app.use(cookieparser())
 
 // app.use("/api/browse",translateRoute)

@@ -22,6 +22,17 @@ module.exports.getOneProduct = (req, res) => {
     });
 };
 
+module.exports.getOneByName = (req, res) => {
+  console.log(req.body.name);
+  db.Product.findAll({ where: { name: req.params.name } })
+    .then((result) => {
+      res.json(result);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
 module.exports.createProduct = (req, res) => {
   db.Product.create(req.body)
     .then((result) => {
