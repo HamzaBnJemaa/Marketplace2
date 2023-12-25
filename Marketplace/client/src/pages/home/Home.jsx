@@ -25,13 +25,13 @@ function Home({ setRefresh, refresh, setCategorie }) {
     setShowAllProducts(true);
   };
 
-  let displayedProducts;
+  // let displayedProducts;
 
-  if (showAllProducts) {
-    displayedProducts = allProducts;
-  } else {
-    displayedProducts = allProducts.slice(0, 5);
-  }
+  // if (showAllProducts) {
+  //   displayedProducts = allProducts;
+  // } else {
+  //   displayedProducts = allProducts.slice(0, 5);
+  // }
 
   return (
     <div className="home-container">
@@ -49,12 +49,12 @@ function Home({ setRefresh, refresh, setCategorie }) {
         <h1 className='Cont-h1'>Explore Our Products</h1>
         <div className='button-1'></div>
         <Box className="image-box-container">
-          {displayedProducts.map((el, i) => (
+          {/* {displayedProducts.map((el, i) => (
             <div key={i} className="image-box">
               <img className="product-image" src={el.image[0]} alt={`Product ${i + 1}`} />
               <Paper elevation={3} className="image-paper" />
             </div>
-          ))}
+          ))} */}
         </Box>
         <div className='button-2'>
           <RemoveRedEyeIcon onClick={handleShowAllProducts} />

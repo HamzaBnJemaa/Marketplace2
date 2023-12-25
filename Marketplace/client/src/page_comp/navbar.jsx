@@ -10,7 +10,11 @@ import ShoppingCartCheckoutIcon from '@mui/icons-material/ShoppingCartCheckout';
 import Badge from '@mui/material/Badge';
 
 function Navbar() {
-  const location = useLocation();
+
+  const location = useLocation("");
+
+
+
   const top100Films = [
     { title: 'The Shawshank Redemption', year: 1994 },
     { title: 'The Godfather', year: 1972 },
@@ -41,6 +45,26 @@ function Navbar() {
                 Account
               </Link>
               <li><Link to="/add">Add</Link></li>
+            </li>
+            <li>
+            <Link
+                className={`link ${
+                  location.pathname === "/contact" ? "active" : ""
+                }`}
+                to="/contact"
+              >
+                Contact
+              </Link>
+            </li>
+            <li>
+              <Link
+                className={`link ${
+                  location.pathname === "/error" ? "active" : ""
+                }`}
+                to="/error"
+              >
+                Error
+              </Link>
             </li>
           </ul>
         </div>
