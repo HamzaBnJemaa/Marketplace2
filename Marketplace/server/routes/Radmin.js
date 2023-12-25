@@ -6,9 +6,10 @@ Route.get("/clients",controller.getclients)
 Route.get("/sellers",controller.getsellers)
 Route.get("/categorys",controller.getAllCateg)
 Route.get("/products",controller.getAllProduct)
-Route.delete("/deletecat",controller.deleteProduct)
-Route.delete("/deletecateg",controller.removegcateg)
-Route.put("/updatecat",controller.updatecateg)
+Route.get("/getadmin",controller.getadmin)
+Route.delete("/deleteprod/:idp",controller.deleteProduct)
+Route.delete("/deletecateg/:idcat",controller.removegcateg)
+Route.put("/updatecat/:idcat",controller.updatecateg)
 Route.post("/creatcat",controller.createcat)
 
 module.exports=Route

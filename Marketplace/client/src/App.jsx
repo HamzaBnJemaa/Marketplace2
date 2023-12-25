@@ -41,9 +41,9 @@ axios.defaults.withCredentials=true
   return (
     <div>
       <BrowserRouter>
-      <Navbar/>
-      <Outlet/>
-      
+
+      {/* <Navbar/> */}
+
         <Routes>
           <Route path="/" element={<Official/>}></Route>
           <Route path="/home" element={<Home setRefresh={setRefresh} refresh={refresh} setCategorie={setCategorie}/>}></Route>
