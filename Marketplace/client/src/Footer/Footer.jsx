@@ -7,9 +7,9 @@ const Footer = () => {
     <Container
       maxWidth="lg"
       style={{
-        width: '100%',
-        height: '330px',
-        paddingTop: '80px',
+        width: '120%',
+        height: '250px',
+        paddingTop: '100px',
         paddingBottom: '24px',
         background: 'black',
         flexDirection: 'column',
