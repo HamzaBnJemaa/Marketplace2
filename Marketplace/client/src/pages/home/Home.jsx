@@ -6,6 +6,7 @@ import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 import axios from 'axios';
 import './For.css';
 import Nouv from '../Nouveau/Nouv';
+import Bas from '../Bas/Bas';
 
 function Home({ setRefresh, refresh, setCategorie }) {
   const [allProducts, setAllProducts] = useState([]);
@@ -39,6 +40,7 @@ function Home({ setRefresh, refresh, setCategorie }) {
       <div className='slide-container'>
   <Nouv />
 </div>
+
       <div className="container">
         <h2 className='cont-h2'>Browse By Category</h2>
         <Box sx={{ width: '80%', flexBasis: '70%' }}>
@@ -59,6 +61,9 @@ function Home({ setRefresh, refresh, setCategorie }) {
         <div className='button-2'>
           <RemoveRedEyeIcon onClick={handleShowAllProducts} />
         </div>
+      </div>
+      <div>
+          <Bas />
       </div>
     </div>
   );
