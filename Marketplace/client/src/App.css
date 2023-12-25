@@ -29,13 +29,39 @@ header {
 .div1_nav{
   margin-left: 1em;
 }
-.ul_nav{
-  display: flex;
+.ul_nav {
   list-style: none;
-  li{
-    font-size: 25px;
-    margin-right: 2em;
-  }
+  padding: 0;
+  display: flex;
+  justify-content: space-around;
+}
+.li_navbar {
+  position: relative;
+  padding-left: 25px;
+  font-size: 25px;
+}
+.link {
+  text-decoration: none;
+  color: #333;
+  cursor: pointer;
+}
+.active::before {
+  content: '';
+  position: absolute;
+  width: 85%;
+  height: 3px;
+  bottom: -2px;
+  background-color: black; 
+  transition: transform 0.3s ease;
+  transform-origin: bottom right;
+}
+
+.active::before {
+  transform: scaleX(1);
+}
+
+.link:hover::before {
+  transform: scaleX(0);
 }
 .stack_nav{
   margin-right: 2em;
@@ -46,21 +72,21 @@ header {
 }
 .search_icon{
   position:absolute;
-  right: 15.5em;
+  right: 20em;
   top: 5.7em;
   background-color: rgba(128, 128, 128, 0);
   border: none;
   cursor: pointer;
 }
 .div2_nav{
-  padding-right: 4em;
+  padding-right: 2em;
   display: flex;
 }
 .icons_nav{
-  padding-top: 0.7em;
+  padding-top: 0.4em;
 }
 .nav_icons{
-  margin-right: 0.5em;
+  margin-right: 0.2em;
   cursor: pointer;
   background-color: white;
   border: none;
@@ -166,4 +192,23 @@ border: 1px solid;
 
 .updateimg_admin{
 padding-left:50px ;
+}
+.nav_admin{
+  height: 5em;
+  text-align: center;
+}
+.h1_admin{
+  color: white;
+  padding: 5px;
+  position: relative;
+  animation-name: example;
+  animation-duration: 6s;
+  animation-iteration-count: infinite;
+}
+@keyframes example {
+  0%   {left:0px;}
+  25%  {left:200px;}
+  50% {left:0px}
+  75%  {left:-200px;}
+  100%{left:0px;}
 }
