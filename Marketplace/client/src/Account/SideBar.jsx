@@ -2,10 +2,10 @@
 import React from "react";
 import "./side.css"
 import Create from "../pages/Create/Create.jsx"
-import { Link, Outlet, useLocation } from "react-router-dom";
+import { Link, useLocation} from "react-router-dom";
 
 export default function SideBar() {
-  const location=useLocation()
+  const location = useLocation();
   return (
     <div className="side"> 
     <div className="manage-my-account">Manage My Account</div>
