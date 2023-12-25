@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useState, useEffect } from 'react';
+import React, { useState} from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import TextField from '@mui/material/TextField';
 import Stack from '@mui/material/Stack';
@@ -43,7 +43,6 @@ function Navbar() {
             <li>Contact</li>
             <li><Link to="/create">Create</Link></li>
             <li> <Link to="/About">About Us</Link></li>
-            <li><Search /></li>
             <li>
               <Link
                 className={`link ${
@@ -83,7 +82,7 @@ function Navbar() {
               className='search_nav'
               id="free-solo-demo"
               freeSolo
-              options={product.map((option) => option.title)}
+              options={top100Films.map((option) => option.title)}
               renderInput={(params) => (
                 <TextField
                   {...params}
@@ -95,7 +94,7 @@ function Navbar() {
           </Stack>
           <div className='icons_nav'>
             <button className='nav_icons'>
-              <Badge badgeContent={userProducts.length} color='error'>
+              <Badge badgeContent={top100Films.length} color='error'>
                 <Link to='/wish'>
                   <FavoriteBorderIcon />
                 </Link>
