@@ -1,11 +1,27 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { TextField, Button, Container, Grid, Paper } from '@mui/material';
 import {useNavigate} from 'react-router-dom'
+import axios from 'axios';
 
 
-function Admin() {
+function Admin({shownav}) {
+    const [admins,setAdmins]=useState([])
     const navigate=useNavigate()
-  return (
+    shownav(false)
+useEffect(()=>{
+    getadmin()
+},[])
+
+
+    let getadmin=()=>{
+        axios.get("http://localhost:3000/api/admin/getadmin")
+        .then((res)=>{
+            setAdmins(res.data)
+            console.log(res.data);
+        })
+    }
+
+    return (
     <div>
         <Container>
       <Grid container justifyContent="center" alignItems="center" style={{ height: '60vh' }}>

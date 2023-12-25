@@ -41,7 +41,7 @@ const VisuallyHiddenInput = styled('input')({
     width: 1,
   });
 
-function Dashboard() {
+function Dashboard({shownav}) {
     const [openCli, setOpenCli] = React.useState(true);
     const [openSel, setOpenSel] = React.useState(true);
     const [openCat, setOpenCat] = React.useState(true);
@@ -61,6 +61,7 @@ function Dashboard() {
     const [file,setFile]=useState(null)
     const [namecat,setNamecat]=useState("")
     axios.defaults.withCredentials=true
+    shownav(false)
 
 let infoupdate={
     name:namecat,
@@ -119,7 +120,7 @@ useEffect(()=>{
         })
     }
     let deletecateg=(id)=>{
-        axios.delete("http://localhost:3000/api/admin/deletecateg"+id)
+        axios.delete("http://localhost:3000/api/admin/deletecateg/"+id)
         .then(()=>{
             console.log("poduct deleted");
         })
@@ -129,7 +130,7 @@ useEffect(()=>{
     }
 
     let deleteprod=(id)=>{
-        axios.delete("http://localhost:3000/api/admin/deleteprod"+id)
+        axios.delete("http://localhost:3000/api/admin/deleteprod/"+id)
         .then(()=>{
             console.log("category deleted");
         })
@@ -159,13 +160,27 @@ useEffect(()=>{
 
     const uploadImage = ()=>{
  
-        const form =new FormData()
-        form.append('file', file)
-        form.append("upload_preset" , "marketplace")
-        axios.post("https://api.cloudinary.com/v1_1/djc7yq80i/image/upload",form)
-        .then(
-            result=>{setImage(result.data.secure_url)}
+        const data =new FormData()
+        data.append('file', file)
+        data.append("upload_preset" , "marketplace")
+        console.log("data",data,file);
+        const obj={}
+        obj.file=file
+        obj.upload_preset = "marketplace"
+        console.log(obj);
+        fetch("https://api.cloudinary.com/v1_1/djc7yq80i/image/upload",
+        {
+            method:"post",
+            body:data
+        }
         )
+        .then((resp)=>resp.json())
+        .then(
+            result=>{
+                console.log(result);
+                setImage(result.secure_url)}
+        )
+        .catch(err=>{console.error("error cloudinary",err);})
       }
 
  //////////////RENDRING///////////////     
@@ -305,8 +320,8 @@ useEffect(()=>{
   return (
     <div>
         <div>
-    <nav>
-        
+    <nav className='nav_admin'>
+        <h1 className='h1_admin'>Admin Page </h1>
     </nav>
         </div>
         <div>
