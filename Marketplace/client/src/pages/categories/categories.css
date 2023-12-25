@@ -21,3 +21,40 @@
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
+
+
+ 
+.Categorys {
+  position: relative;
+  width: 29%;
+  height: 450px;
+  border-right: 1px solid #b7b7b7;
+}
+
+.List {
+  position: absolute;
+  width: 85%;
+  height: 80%;
+  left: 23%;
+  top: 24%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.ListItems {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 22px;
+}
+
+li {
+  text-align: center;
+  /* Title/16PX Regular */
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px;
+}

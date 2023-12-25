@@ -55,6 +55,26 @@ function Navbar() {
               </Link>
               <li><Link to="/add">Add</Link></li>
             </li>
+            <li>
+            <Link
+                className={`link ${
+                  location.pathname === "/contact" ? "active" : ""
+                }`}
+                to="/contact"
+              >
+                Contact
+              </Link>
+            </li>
+            <li>
+              <Link
+                className={`link ${
+                  location.pathname === "/error" ? "active" : ""
+                }`}
+                to="/error"
+              >
+                Error
+              </Link>
+            </li>
           </ul>
         </div>
         <div className='div2_nav'>
