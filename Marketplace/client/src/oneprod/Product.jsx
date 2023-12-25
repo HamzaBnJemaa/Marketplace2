@@ -9,22 +9,30 @@ import Checkbox from '@mui/material/Checkbox';
 import FavoriteBorder from '@mui/icons-material/FavoriteBorder';
 import Favorite from '@mui/icons-material/Favorite';
 import ButtonGroup from '@mui/material/ButtonGroup';
-import "./oneprod.css"
+import { useLocation } from 'react-router-dom';
+import { Link } from "react-router-dom";
+import Cookies from "js-cookie"
+import "./Pro.css"
+
+
 function Product() {
+
   const[data,setData]=useState([])
   const [selectedValue, setSelectedValue] =useState('a');
   const [quantity, setQuantity] = useState(1)
   const [mainImage, setMainImage] = useState("")
   const [selectedButton, setSelectedButton] = useState(null);
   const [size,setSize]=useState("")
- 
-  const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
-
+const id = Cookies.get("id")
   
-
+  const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
+  
+  const location = useLocation();
+  const one = location.state.one
+  
   useEffect(() => {
     axios
-.get('http://localhost:3000/api/product/getOne/1')
+.get(`http://localhost:3000/api/Oneproduct/getOne/${one.idp}`)
       .then((result) => {
         setData(result.data);
         setMainImage(result.data[0].image[0]);
@@ -33,6 +41,18 @@ function Product() {
         console.log(err);
       });
   }, []);
+
+const HandleFav =(obj) =>{
+  axios.post(`http://localhost:3000/api/product/addFav`,obj).then((resss)=>{
+    console.log("added");
+ 
+  }).catch((err)=>{
+    console.log(err);
+  })
+}
+
+
+
   const handleChange = (event) => {
     setSelectedValue(event.target.value);
   };
@@ -60,28 +80,28 @@ function Product() {
   const handleSize=(newSize)=>{
     setSize(newSize)
   }
-
+console.log("ge",id);
 
   return (
     <div>
-      {data.map((el, i) => {
+      {data.map((one, i) => {
         return (
           <div key={i}>
             {/* name rate price description */}
             <div className='p1'>
             <div className='productName'>
-              <h1 className='name'>{el.name}</h1>
+              <h1 className='name'>{one.name}</h1>
               <div className='rate'>
-                <Rating name="read-only" value={el.rate} readOnly />
+                <Rating name="read-only" value={one.rate} readOnly />
                 <h6 className='review'>(17 Reviews) | </h6>
                 <h6 className='instock'>In Stock</h6>
               </div>
               <div>
-              <h3 className='price1' color=''>$ {el.newprice}</h3>
-              <h3 className='price2'>$ {el.lastprice}</h3>
+              <h3 className='price1' color=''>$ {one.newprice}</h3>
+              <h3 className='price2'>$ {one.lastprice}</h3>
               </div>
               
-              <h6 className='description'>{el.discription}</h6>
+              <h6 className='description'>{one.discription}</h6>
             </div>
             {/* color */}
             <div classame="productColor">
@@ -222,11 +242,13 @@ function Product() {
               />
               </div >
             <div className='q'>
-            <Button variant="contained" color="error">BUY</Button> 
+            <Button variant="contained" color="error" >
+            <Link to="/card" state={{one:one}}>BUY</Link>
+            </Button> 
             </div>
 
             <div className='q'>
-            <Checkbox {...label} icon={<FavoriteBorder color="error"/>} checkedIcon={<Favorite color="error"/>} />
+            <Checkbox {...label} icon={<FavoriteBorder color="error"/>} onClick={()=>{HandleFav({product_idp:one.idp,users_idu:id})}} checkedIcon={<Favorite color="error"/>  } />
             </div>    
             </div>
             </div>
@@ -234,7 +256,7 @@ function Product() {
 
             <div className='productImage'>
             <div className='smallImages'>
-                {el.image.map((image, index) => (
+                {one.image.map((image, index) => (
                   <div key={index} className='smallImage' onMouseOver={() => handleImage(image)} onMouseLeave={()=>setMainImage(data[0].image[0])}>
                     <img src={image} alt="" />
                   </div>
