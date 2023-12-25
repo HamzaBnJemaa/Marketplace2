@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link, NavLink, useLocation } from "react-router-dom";
 
 import TextField from '@mui/material/TextField';
@@ -8,17 +8,21 @@ import SearchIcon from '@mui/icons-material/Search';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import ShoppingCartCheckoutIcon from '@mui/icons-material/ShoppingCartCheckout';
 import Badge from '@mui/material/Badge';
+import axios from 'axios';
 
 function Navbar() {
-  const location = useLocation();
-  const top100Films = [
-    { title: 'The Shawshank Redemption', year: 1994 },
-    { title: 'The Godfather', year: 1972 },
-    { title: 'The Godfather: Part II', year: 1974 },
-    { title: 'The Dark Knight', year: 2008 },
-    { title: '12 Angry Men', year: 1957 },
-    { title: "Schindler's List", year: 1993 },
-    { title: 'Pulp Fiction', year: 1994 },]
+  const [bestprod,setBestpro]=useState([])
+  console.log(bestprod);
+  const location = useLocation("");
+
+  useEffect(()=>{
+    axios.get("http://localhost:3000/api/navbar/bestprod")
+    .then(res=>{setBestpro(res.data)})
+    .catch(err=>{console.error(err);})
+  },[])
+
+
+  const top100Films = bestprod
   return (
     <div>
       <nav><p className='nav_mess'>Summer Sale For All Swim Suits And Free Express Delivery - OFF 50%! <a href="" className='link_nav' >ShopNow</a> </p></nav>
@@ -41,6 +45,26 @@ function Navbar() {
                 Account
               </Link>
               <li><Link to="/add">Add</Link></li>
+            </li>
+            <li>
+            <Link
+                className={`link ${
+                  location.pathname === "/contact" ? "active" : ""
+                }`}
+                to="/contact"
+              >
+                Contact
+              </Link>
+            </li>
+            <li>
+              <Link
+                className={`link ${
+                  location.pathname === "/error" ? "active" : ""
+                }`}
+                to="/error"
+              >
+                Error
+              </Link>
             </li>
           </ul>
         </div>

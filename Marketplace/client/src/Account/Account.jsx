@@ -11,7 +11,7 @@ import {
 } from "@mui/material";
 import { Outlet } from "react-router-dom";
 
-const Account = (props) => {
+const Account = () => {
   console.log("test");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -19,56 +19,67 @@ const Account = (props) => {
   const [password, setPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [address, setAddress] = useState("");
+  // const [address, setAddress] = useState("");
 
   const handleInputChange = (e, setStateFunction) => {
     setStateFunction(e.target.value);
   };
 
-  
-
-const handleSubmit = async () => {
-  if (
-    firstName === "" ||
-    lastName === "" ||
-    email === "" ||
-    password === "" ||
-    newPassword === "" ||
-    confirmPassword === "" ||
-    address === ""
-  ) {
-    alert("Please enter your all  information");
-    return;
-  }
-
-  if (password !== props.password) {
-    alert("Current Password is incorrect");
-    return;
-  }
-
-  if (newPassword !== confirmPassword) {
-    alert("New Passwords do not match");
-    return;
-  }
-
-  try {
-    const response = await axios.post('/api/update', {
-      password: newPassword,
-      name: `${firstName} ${lastName}`,
-      email: email,
-      address: address,
-    });
-
-    if (response.status === 200) {
-      alert("User updated successfully");
-    } else {
-      alert("Failed to update user");
+  const update =async(idu)=>{
+    try {
+      if(newPassword === confirmPassword)
+  {    await axios.put(`http://localhost:3000/api/getone/${idu}`, {
+          password: newPassword,
+          name: `${firstName} + ${lastName}`,
+          email:email,
+          // address: address,
+        })
+  alert("your update is successfully")
+  return 
+    }} catch (error) {
+      alert("check passworrd")
     }
-  } catch (error) {
-    console.error("Error updating user:", error);
-    alert("An error occurred while updating user");
   }
-};
+// const handleSubmit = async () => {
+//   if (
+//     firstName === "" ||
+//     lastName === "" ||
+//     email === "" ||
+//     password === "" ||
+//     newPassword === "" ||
+//     confirmPassword === "" )
+//     // address === ""
+//    {
+//     alert("Please enter your all  information");
+//     return;
+//   }
+//   if ( password ===  newPassword) {
+//     alert("Current Password is incorrect");
+//     return;
+//   }
+//   if (newPassword !== confirmPassword) {
+//     alert("New Passwords do not match");
+//     return;
+//   }
+
+//   try {
+//     const response = await axios.put('http://localhost:3000/api/update', {
+//       password: newPassword,
+//       name: `${firstName} + ${lastName}`,
+//       email: email,
+//       // address: address,
+//     });
+
+//     if (response.status === 200) {
+//       alert("User updated successfully");
+//     } else {
+//       alert("Failed to update user");
+//     }
+//   } catch (error) {
+//     console.error("Error updating user:", error);
+//     alert("An error occurred while updating user");
+//   }
+// };
 
   return (
     <div>
@@ -103,8 +114,8 @@ const handleSubmit = async () => {
               onChange={(e) => handleInputChange(e, setLastName)}
             />
           </Grid>
-          <Grid container spacing={2} style={{ marginBottom: "16px" }}></Grid>
-          <Grid item xs={6}>
+          
+          <Grid item xs={12}>
             
             <TextField
               label="Email"
@@ -113,14 +124,7 @@ const handleSubmit = async () => {
               onChange={(e) => setEmail(e.target.value)}
             />
           </Grid>
-          <Grid item xs={6}>
-            <TextField
-              label="Address"
-              fullWidth
-              value={address}
-              onChange={(e) => setAddress(e.target.value)}
-            />
-          </Grid>
+          
           <Grid item xs={12}>
             <TextField
               type="password"
@@ -153,14 +157,13 @@ const handleSubmit = async () => {
         <Button
           variant="contained"
           color="error"
-          onClick={handleSubmit}
+          onClick={()=>{update({email:email,newPassword:newPassword,password:password,firstName:firstName,lastName:lastName})}}
           style={{ marginBottom: "16px" }}
         >
           Save Changes
         </Button>
         <Button
           variant="outlined"
-          
           onClick={() => {
             setFirstName("");
             setLastName("");
@@ -168,7 +171,7 @@ const handleSubmit = async () => {
             setPassword("");
             setNewPassword("");
             setConfirmPassword("");
-            setAddress("");
+            // setAddress("");
           }}
           style={{ color: "black" }}
         >
@@ -188,10 +191,5 @@ const handleSubmit = async () => {
 
 
 
-
 export default Account;
-
-
-
-
 

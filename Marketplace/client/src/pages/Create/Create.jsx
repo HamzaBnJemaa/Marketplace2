@@ -4,6 +4,7 @@ import "./create.css";
 import Box from "@mui/material/Box";
 import Input from "@mui/material/Input";
 import { Link } from "react-router-dom";
+import SideBar from "../../Account/SideBar";
 import Select from "@mui/material/Select";
 import FormControl from "@mui/material/FormControl";
 import InputLabel from "@mui/material/InputLabel";
@@ -160,6 +161,7 @@ function Create() {
           <Link to="/products">Add</Link>
         </button>
       </div>
+      <SideBar/>
     </div>
   );
 }
