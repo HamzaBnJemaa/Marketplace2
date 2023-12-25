@@ -7,7 +7,7 @@ const admin =require("./routes/Radmin")
 const Product= require("../database-mysql");
 // const User =require("../database-mysql/index.js")
 // const translateRoute = require("./routes/Rbrowses");
-
+const navbar =require("./routes/Rnavbar")
 const translateRoute2 = require("./routes/Rcategories");
 const translateRoute3 =require("./routes/Rproduct")
 const translateRoute4 = require("./routes/Roneproduct");
@@ -42,6 +42,7 @@ app.use("/api/product",translateRoute3)
 app.use("/api/Oneproduct",translateRoute4)
 app.use("/api/market", authrout);
 app.use("/api/admin",admin)
+app.use("/api/navbar",navbar)
 
 
 app.get('/get',(req,res)=>{
