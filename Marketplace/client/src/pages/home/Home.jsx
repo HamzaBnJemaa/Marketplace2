@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Categories from '../categories/Categories';
 import Box from '@mui/material/Box';
-import Paper from '@mui/material/Paper';
 import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 import { Rating } from '@mui/material';
 import axios from 'axios';
@@ -32,7 +31,7 @@ function Home({ setRefresh, refresh, setCategorie }) {
   if (showAllProducts) {
     displayedProducts = allProducts;
   } else {
-    displayedProducts = allProducts.slice(0, 5);
+    displayedProducts = allProducts.slice(0, 4)
   }
 
   return (
@@ -43,26 +42,31 @@ function Home({ setRefresh, refresh, setCategorie }) {
 </div>
 
       <div className="container">
-        <h2 className='cont-h2'>Browse By Category</h2>
+        <h1 className='cont-h2'>Browse By Category</h1>
         <Box sx={{ width: '80%', flexBasis: '70%' }}>
           <Categories setRefresh={setRefresh} refresh={refresh} setCategorie={setCategorie} />
         </Box>
       </div>
       <div>
-        <h1 className='Cont-h1'>Explore Our Products</h1>
+        <h1 className='cont-h1'>Explore Our Products</h1>
         <div className='button-1'></div>
         <Box className="image-box-container">
           {displayedProducts.map((el, i) => (
-            <div key={i} className="image-box">
-              <img className="product-image" src={el.image[0]} />
-              <h4> {el.newprice} TND</h4>
-              <Rating name="read-only" value={el.rate} readOnly />
-              <Paper elevation={3} className="image-paper" />
-            </div>
+           <div key={i} className="image-box">
+           <img className="product-image" src={el.image[0]} alt={el.name} />
+           <h3>{el.name}</h3>
+           <div className='flous'>
+               <h4 className='price1'>${el.newprice}</h4>
+               <h4 className='price2'>${el.lastprice}</h4>
+           </div>
+           <Rating name="read-only" value={el.rate} readOnly />
+           <button className="add-to-cart-button">Add to Cart</button>
+       </div>
+       
           ))}
         </Box>
         <div className='button-2'>
-          <RemoveRedEyeIcon onClick={handleShowAllProducts} />
+          <button className='show-all1' onClick={handleShowAllProducts} > <h1>Show All </h1></button>
         </div>
       </div>
       <div>

@@ -24,6 +24,7 @@ function Product() {
   const [selectedButton, setSelectedButton] = useState(null);
   const [size,setSize]=useState("")
 const id = Cookies.get("id")
+
   
   const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
   
@@ -50,7 +51,6 @@ const HandleFav =(obj) =>{
     console.log(err);
   })
 }
-
 
 
   const handleChange = (event) => {
