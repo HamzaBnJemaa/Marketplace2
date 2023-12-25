@@ -41,6 +41,7 @@ function Products({ idCategorie }) {
           <img className="product-item img" src={product.image[0]} />
           <div>
             <h1>{product.name}</h1>
+            <h4>Prix : {product.price} TND</h4>
         
           <button className='nav_icons'>
     <Badge color="error" variant="dot">

@@ -25,7 +25,7 @@ const Account = () => {
     setStateFunction(e.target.value);
   };
 
-  const update =async()=>{
+  const update =async(idu)=>{
     try {
       if(newPassword === confirmPassword)
   {    await axios.put(`http://localhost:3000/api/getone/${idu}`, {
