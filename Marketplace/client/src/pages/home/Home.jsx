@@ -3,9 +3,11 @@ import Categories from '../categories/Categories';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
+import { Rating } from '@mui/material';
 import axios from 'axios';
 import './For.css';
 import Nouv from '../Nouveau/Nouv';
+import Bas from '../Bas/Bas';
 
 function Home({ setRefresh, refresh, setCategorie }) {
   const [allProducts, setAllProducts] = useState([]);
@@ -25,13 +27,13 @@ function Home({ setRefresh, refresh, setCategorie }) {
     setShowAllProducts(true);
   };
 
-  // let displayedProducts;
+  let displayedProducts;
 
-  // if (showAllProducts) {
-  //   displayedProducts = allProducts;
-  // } else {
-  //   displayedProducts = allProducts.slice(0, 5);
-  // }
+  if (showAllProducts) {
+    displayedProducts = allProducts;
+  } else {
+    displayedProducts = allProducts.slice(0, 5);
+  }
 
   return (
     <div className="home-container">
@@ -39,6 +41,7 @@ function Home({ setRefresh, refresh, setCategorie }) {
       <div className='slide-container'>
   <Nouv />
 </div>
+
       <div className="container">
         <h2 className='cont-h2'>Browse By Category</h2>
         <Box sx={{ width: '80%', flexBasis: '70%' }}>
@@ -49,16 +52,21 @@ function Home({ setRefresh, refresh, setCategorie }) {
         <h1 className='Cont-h1'>Explore Our Products</h1>
         <div className='button-1'></div>
         <Box className="image-box-container">
-          {/* {displayedProducts.map((el, i) => (
+          {displayedProducts.map((el, i) => (
             <div key={i} className="image-box">
-              <img className="product-image" src={el.image[0]} alt={`Product ${i + 1}`} />
+              <img className="product-image" src={el.image[0]} />
+              <h4> {el.newprice} TND</h4>
+              <Rating name="read-only" value={el.rate} readOnly />
               <Paper elevation={3} className="image-paper" />
             </div>
-          ))} */}
+          ))}
         </Box>
         <div className='button-2'>
           <RemoveRedEyeIcon onClick={handleShowAllProducts} />
         </div>
+      </div>
+      <div>
+          <Bas />
       </div>
     </div>
   );
