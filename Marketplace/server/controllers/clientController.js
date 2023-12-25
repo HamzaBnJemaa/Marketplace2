@@ -75,8 +75,7 @@ updateClient : async (req,res)=>{
       res.status(500).json({ Error: 'Internal Server Error' });
     }
   },
-  
-
 }
+
 
 
