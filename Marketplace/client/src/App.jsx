@@ -25,7 +25,7 @@ import Error from "../src/error/Error.jsx"
 function App() {
 
 
-
+  const [shownav,setShownav]=useState(true)
   const [idCategorie,setCategorie]=useState(0)
   console.log(idCategorie);
 
@@ -38,9 +38,8 @@ axios.defaults.withCredentials=true
   return (
     <div>
       <BrowserRouter>
-      <Navbar/>
+       {shownav&&<Navbar/>}
         <Routes>
-          <Route path="/Search" element={<Search />} />
           <Route path="/" element={<Official/>}></Route>
           <Route path="/home" element={<Home setRefresh={setRefresh} refresh={refresh} setCategorie={setCategorie}/>}></Route>
           <Route path="/products" element={<Products idCategorie={idCategorie} />}></Route> 
@@ -50,16 +49,16 @@ axios.defaults.withCredentials=true
          <Route path="/account" element={<Account/>} /> 
          <Route path="/About" element={<About />}></Route>
           <Route path="/one" element={<Product/>}> </Route>
-          <Route path="/admin" element={<Admin/>} ></Route>
+          <Route path="/admin" element={<Admin shownav={setShownav}/>} ></Route>
           <Route path="/card" element={<Cart/>}> </Route>
-          <Route path="/admin/dashboard" element={<Dashboard/>}></Route>
+          <Route path="/admin/dashboard" element={<Dashboard shownav={setShownav}/>}></Route>
           <Route path="/contact" element={<Contact />} />
            <Route path="*" element={<Error/>}></Route>
           <Route path="/Wish" element={<Wish/>}></Route>
           {/* <Route path="*" element={<Not />} /> */}
         </Routes>
         <div className="footer-div">
-        <Footer/>
+        {shownav&&<Footer/>}  
         </div>
       </BrowserRouter>
     </div>
