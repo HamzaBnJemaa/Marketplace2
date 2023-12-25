@@ -75,7 +75,7 @@ console.log(searched);
       </nav>
       <header>
         <div>
-          <h1 className='title_nav'>MarketPlace</h1>
+          <h1 className='title_nav'>MarketPlaces</h1>
         </div>
         <div className='div1_nav'>
         <ul className="ul_nav">

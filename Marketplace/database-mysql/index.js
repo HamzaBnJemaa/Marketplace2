@@ -127,7 +127,7 @@ Product.belongsTo(Category, { foreignKey: 'categorys_idcat', as: 'category' });
 Product.belongsTo(User, { foreignKey: 'users_idu', as: 'user' });
 
 // Define the Save model
-const Save = connection.define('save', {
+const Save = connection.define('saves', {
   idsave: {
     type: DataTypes.INTEGER,
     allowNull: false,

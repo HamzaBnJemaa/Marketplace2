@@ -27,6 +27,8 @@ let getadmin=async(req,res)=>{
     console.error(err);
   }
 }
+
+
 ////////// CATEGORYS ////////////////
 let getAllCateg = function (req, res) {
     Category.findAll()
