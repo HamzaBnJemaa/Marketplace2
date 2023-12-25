@@ -104,11 +104,6 @@ exports.findFav= (req,res) =>{
       model: db.Product,
       as: 'product',
       attributes: ['idp', 'name', 'image', 'lastprice', 'newprice', 'rate', 'discription', 'color', 'size', 'sellername'],
-      // include: {
-      //   model: db.Category,
-      //   as: 'category',
-      //   attributes: ['idcat', 'name', 'image'],
-      // },
     },
   }).then((result)=>{
     res.json(result)

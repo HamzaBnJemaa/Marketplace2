@@ -1,0 +1,12 @@
+.wish-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+  
+  .wish-card {
+    margin: 16px;
+    max-width: 345px;
+  }
+
+  
