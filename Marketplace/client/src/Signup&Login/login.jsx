@@ -34,6 +34,8 @@ const getone = (infoo) => {
       const token= res.data.token 
       
       setOneuser(res.data.user)
+      console.log("hello",res.data.rols);
+      console.log("here",res.data.rols);
       Cookies.set('token',token,{expires:60*60*24})
       Cookies.set('id',res.data.idu)
 

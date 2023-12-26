@@ -63,11 +63,7 @@ function Products({ idCategorie }) {
          
         </div>
       ))}
-      <div>
-        <button>
-          <Link to="/create">Add Product</Link>
-        </button>
-      </div>
+   
     </div>
   );
 }

@@ -1,7 +1,6 @@
 // import "./NavBar.css";
 import React from "react";
 import "./side.css"
-import Create from "../pages/Create/Create.jsx"
 import { Link, useLocation} from "react-router-dom";
 
 export default function SideBar() {
@@ -14,7 +13,7 @@ export default function SideBar() {
                 className={`link ${
                   location.pathname === "/wishList" ? "active" : ""
                 }`}
-                to="/wishList"
+                to="/wish"
               >
                 My WishList
               </Link></div>
@@ -36,7 +35,7 @@ export default function SideBar() {
                 }`}
                 to="/create"
               >
-                My returns
+                Add Product
               </Link> </div>
               
         <div className="address-book">My Cancellations</div>

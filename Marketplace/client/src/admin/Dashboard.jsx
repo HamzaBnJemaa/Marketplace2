@@ -60,6 +60,7 @@ function Dashboard({shownav}) {
     const [image,setImage]=useState("")
     const [file,setFile]=useState(null)
     const [namecat,setNamecat]=useState("")
+    const [refresh,setRefresh]=useState(false)
     axios.defaults.withCredentials=true
     shownav(false)
 
@@ -74,7 +75,8 @@ useEffect(()=>{
     getsellers()
     getCateg()
     getadmin()
-},[])
+    setRefresh(!refresh)
+},[refresh])
 ////FUNCTION///////
     let getclients=()=>{
         axios.get("http://localhost:3000/api/admin/clients")
