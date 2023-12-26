@@ -21,6 +21,7 @@ function Navbar() {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [searching,setSearching]=useState("")
   const [searched,setSearched]=useState([])
+  const [length,setLength]=useState(null)
   const location = useLocation();
 console.log(searched);
 
@@ -44,6 +45,7 @@ console.log(searched);
   let saved=()=>{
     axios.get("http://localhost:3000/api/navbar/seved")
     .then((res)=>{setProductsaved(res.data)
+      setLength(res.data.length)
     console.log("saved list:",res.data);
     })
     .catch((err)=>{console.error(err);})
@@ -68,6 +70,7 @@ console.log(searched);
     const handleClose = () => {
       setAnchorEl(null);
     };
+console.log(length);
   return (
     <div>
       <nav>
@@ -121,7 +124,7 @@ console.log(searched);
           </Stack>
           <div className='icons_nav'>
             <button className='nav_icons'>
-              <Badge badgeContent={productsaved.length} color='error'>
+              <Badge badgeContent={length} color='error'>
                 <Link to='/wish'>
                   <FavoriteBorderIcon />
                 </Link>

@@ -27,6 +27,7 @@ function App() {
 
   const [shownav,setShownav]=useState(true)
   const [idCategorie,setCategorie]=useState(0)
+
   console.log(idCategorie);
 
 const [refresh,setRefresh]=useState(false)
@@ -40,14 +41,13 @@ axios.defaults.withCredentials=true
       <BrowserRouter>
        {shownav&&<Navbar/>}
         <Routes>
-          <Route path="/" element={<Official/>}></Route>
+          <Route path="/" element={<Official />}></Route>
           <Route path="/home" element={<Home setRefresh={setRefresh} refresh={refresh} setCategorie={setCategorie}/>}></Route>
           <Route path="/products" element={<Products idCategorie={idCategorie} />}></Route> 
           <Route path="/create" element={<Create />}></Route>
          <Route path="/add" element={<Add />}></Route>
           <Route path ="/sideBar" element={<SideBar/>} />
          <Route path="/account" element={<Account/>} /> 
-         <Route path="/About" element={<About />}></Route>
           <Route path="/one" element={<Product/>}> </Route>
           <Route path="/admin" element={<Admin shownav={setShownav}/>} ></Route>
           <Route path="/card" element={<Cart/>}> </Route>
@@ -55,7 +55,7 @@ axios.defaults.withCredentials=true
           <Route path="/contact" element={<Contact />} />
            <Route path="*" element={<Error/>}></Route>
           <Route path="/Wish" element={<Wish/>}></Route>
-          {/* <Route path="*" element={<Not />} /> */}
+          <Route path="/About" element={<About />}></Route>
         </Routes>
         <div className="footer-div">
         {shownav&&<Footer/>}  

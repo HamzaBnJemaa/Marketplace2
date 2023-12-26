@@ -40,46 +40,6 @@ const Account = () => {
       alert("check passworrd")
     }
   }
-// const handleSubmit = async () => {
-//   if (
-//     firstName === "" ||
-//     lastName === "" ||
-//     email === "" ||
-//     password === "" ||
-//     newPassword === "" ||
-//     confirmPassword === "" )
-//     // address === ""
-//    {
-//     alert("Please enter your all  information");
-//     return;
-//   }
-//   if ( password ===  newPassword) {
-//     alert("Current Password is incorrect");
-//     return;
-//   }
-//   if (newPassword !== confirmPassword) {
-//     alert("New Passwords do not match");
-//     return;
-//   }
-
-//   try {
-//     const response = await axios.put('http://localhost:3000/api/update', {
-//       password: newPassword,
-//       name: `${firstName} + ${lastName}`,
-//       email: email,
-//       // address: address,
-//     });
-
-//     if (response.status === 200) {
-//       alert("User updated successfully");
-//     } else {
-//       alert("Failed to update user");
-//     }
-//   } catch (error) {
-//     console.error("Error updating user:", error);
-//     alert("An error occurred while updating user");
-//   }
-// };
 
   return (
     <div>
@@ -173,7 +133,7 @@ const Account = () => {
             setConfirmPassword("");
             // setAddress("");
           }}
-          style={{ color: "black" }}
+          style={{ color: "black",marginBottom: "16px" }}
         >
           Cancel
         </Button>
