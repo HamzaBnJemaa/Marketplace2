@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Categories from '../categories/Categories';
 import Box from '@mui/material/Box';
-import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 import { Rating } from '@mui/material';
 import axios from 'axios';
 import './For.css';
@@ -11,6 +10,7 @@ import Bas from '../Bas/Bas';
 function Home({ setRefresh, refresh, setCategorie }) {
   const [allProducts, setAllProducts] = useState([]);
   const [showAllProducts, setShowAllProducts] = useState(false);
+ 
 
   useEffect(() => {
     axios.get('http://localhost:3000/api/product/get')

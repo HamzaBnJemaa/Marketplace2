@@ -23,6 +23,7 @@
     "react-scripts": "5.0.1",
     "react-slider": "^2.0.6",
     "react-slideshow-image": "^4.3.0",
+    "react-youtube": "^10.1.0",
     "styled-components": "^6.1.2",
     "web-vitals": "^2.1.4"
   },

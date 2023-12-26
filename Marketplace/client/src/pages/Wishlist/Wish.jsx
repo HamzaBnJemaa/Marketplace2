@@ -12,14 +12,16 @@ import './Wish.css';
 function Wish() {
   const [refresh,setRefresh]=useState(false)
   const [userProducts, setUserProducts] = useState([]);
+  const [save,setProductsaved]=useState([])
   const id = Cookies.get('id');
 
   useEffect(() => {
     axios
       .get(`http://localhost:3000/api/product/getAll/${id}`)
       .then((result) => {setUserProducts(result.data)
-      console.log(result.data)})
+      console.log(result.data.length)})
       .catch((err) => console.log(err));
+      saved()
   }, [refresh]);
 
   const HandleDelete=(idsave)=>{
@@ -32,11 +34,21 @@ function Wish() {
   }
   
 
+  let saved=()=>{
+    axios.get("http://localhost:3000/api/navbar/seved")
+    .then((res)=>{setProductsaved(res.data)
+    console.log("saved list:",res.data);
+    })
+    .catch((err)=>{console.error(err);})
+}
 
-
+console.log("user",save);
+console.log("id",id);
   return (
     <div className="wish-container">
-      {userProducts.map((el, i) => (
+      {userProducts.map((el, i) => {
+        if(userProducts.users_idu===save.users_idu)
+        return (
       <div key={i}>
         <Card className="wish-card">
           <CardActionArea>
@@ -65,7 +77,7 @@ function Wish() {
 </div>
     
    
-      ))}
+       ) })  }
     </div>
   );
 }

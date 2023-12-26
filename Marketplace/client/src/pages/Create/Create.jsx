@@ -9,6 +9,9 @@ import Select from "@mui/material/Select";
 import FormControl from "@mui/material/FormControl";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
+import { styled } from '@mui/material/styles';
+import Button from '@mui/material/Button';
+import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import Cookies from "js-cookie";
 function Create() {
   const ariaLabel = { "aria-label": "description" };
@@ -26,7 +29,20 @@ function Create() {
   const [category, setCategory] = useState("");
   const [user, setUser] = useState({});
   const [idu, setIdu] = useState("");
+  const [file,setFile]=useState(null)
 const[refresh,setRefresh]=useState(false)
+
+const VisuallyHiddenInput = styled('input')({
+  clip: 'rect(0 0 0 0)',
+  clipPath: 'inset(50%)',
+  height: 1,
+  overflow: 'hidden',
+  position: 'absolute',
+  bottom: 0,
+  left: 0,
+  whiteSpace: 'nowrap',
+  width: 1,
+});
 
 
   useEffect(() => {
@@ -52,6 +68,32 @@ const[refresh,setRefresh]=useState(false)
         console.log(err);
       });
   }, [idu,!refresh]);
+
+  const uploadImage = ()=>{
+ 
+    const data =new FormData()
+    data.append('file', file)
+    data.append("upload_preset" , "marketplace")
+    console.log("data",data,file);
+    const obj={}
+    obj.file=file
+    obj.upload_preset = "marketplace"
+    console.log(obj);
+    fetch("https://api.cloudinary.com/v1_1/doytchn8h/image/upload",
+    {
+        method:"post",
+        body:data
+    }
+    )
+    .then((resp)=>resp.json())
+    .then(
+        result=>{
+            console.log(result);
+            setImage(result.secure_url)}
+    )
+    .catch(err=>{console.error("error cloudinary",err);})
+  }
+
 
   const add = () => {
     const obj = {
@@ -126,12 +168,13 @@ const[refresh,setRefresh]=useState(false)
         placeholder="Size"
         onChange={(e) => setSize(e.target.value)}
       />
-      <Input
-        className="input-field"
-        type="text"
-        placeholder="image"
-        onChange={(e) => setImage(e.target.value)}
-      />
+      <h4 className='h4_admin'>Image : </h4>
+                            <Button  sx={{"margin-left":"35px"}} component="label"  variant="contained" startIcon={<CloudUploadIcon />}>
+                            Upload file
+                            <VisuallyHiddenInput type="file" onChange={(e) => setFile(e.target.files[0])} />
+                            </Button>
+                            <Button sx={{"margin-right":"5em"}} onClick={()=>{uploadImage()
+                            console.log(file)}}>valider</Button>
 
       {cate.length > 0 && (
         <FormControl sx={{ m: 1, minWidth: 250 }}>
@@ -161,7 +204,7 @@ const[refresh,setRefresh]=useState(false)
             add();
           }}
         >
-          <Link to="/products">Add</Link>
+          <Link to="/home">Add</Link>
         </button>
       </div>
       <SideBar/>

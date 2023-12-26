@@ -50,16 +50,6 @@ app.get('/get',(req,res)=>{
 })
 
 
-// app.post("/login",(req,res)=>{
-//   Product.User.create(req.body)
-//   .then((result)=>{
-//     res.send(result)
-//   }).catch((err)=>{
-//     console.log(err);
-//   })
-// })
-
-
 app.listen(3000, () => {
   console.log(`listening on port ${PORT}`);
 });
